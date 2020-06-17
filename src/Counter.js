@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import {changeItAction} from './actions'
+import {changeItAction} from './actions/actions'
 import { connect } from "react-redux";
 
 
