@@ -23,7 +23,6 @@ const initValue = {
 const updateVehicle = (state, action) => {
   const vehicleId = "vehicle0";
   const vehicle0 = state[vehicleId];
-  console.log(vehicle0);
 
   return {
     ...state,
@@ -39,7 +38,6 @@ const addEvent = (state, action) => {
   const { payload } = action
   const { vehicleId, eventId } = payload
   const vehicle0 = state[vehicleId];
-  console.log("add event in vehicleReducer", vehicleId);
   return {
     ...state,
     [vehicleId]: {

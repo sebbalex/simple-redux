@@ -26,8 +26,6 @@ const initValue = {
 const updateEvent = (state, action) => {
   const eventId = "event1";
   const event1 = state[eventId];
-  console.log(event1);
-
   return {
     ...state,
     [eventId]: {
@@ -39,9 +37,7 @@ const updateEvent = (state, action) => {
 
 const addEvent = (state, action) => {
   const { payload } = action
-  const { vehicleId, eventTitle, eventId } = payload
-  
-  console.log("add event in eventReducer", vehicleId, eventTitle);
+  const { eventTitle, eventId } = payload
   return {
     ...state,
     [eventId]: { title: eventTitle }
