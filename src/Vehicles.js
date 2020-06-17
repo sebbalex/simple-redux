@@ -1,26 +1,26 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { changeItVeichleAction, changeItEventAction } from './actions/actions'
+import { changeItVehicleAction, changeItEventAction } from './actions/actions'
 import { connect } from "react-redux";
 
 
-class Veichles extends Component {
+class Vehicles extends Component {
   render() {
-    const { veichles, events, onChangeItClick, onChangeItEventAction } = this.props;
+    const { vehicles, events, onChangeItClick, onChangeItEventAction } = this.props;
     return (
       <div>
-        <button onClick={onChangeItClick}>Change Veichle0 name</button>
-        <div>{JSON.stringify(veichles?.byId?.veichle0, null, 2)}</div>
+        <button onClick={onChangeItClick}>Change Vehicle0 name</button>
+        <div>{JSON.stringify(vehicles?.byId?.vehicle0, null, 2)}</div>
         <br />
         <button onClick={onChangeItEventAction}>Change event1 name</button>
         <div>{JSON.stringify(events?.byId?.event1, null, 2)}</div>
         <br />
         <br />
         <div>
-          Events for veichle0:
+          Events for vehicle0:
           <br />
           {JSON.stringify(
-            veichles.byId.veichle0.events.map(e => {
+            vehicles.byId.vehicle0.events.map(e => {
               return events.byId[e].title;
             })
             , null, 2)}</div>
@@ -29,8 +29,8 @@ class Veichles extends Component {
   }
 }
 
-Veichles.propTypes = {
-  veichles: PropTypes.object.isRequired,
+Vehicles.propTypes = {
+  vehicles: PropTypes.object.isRequired,
   events: PropTypes.object.isRequired,
   onChangeItClick: PropTypes.func.isRequired
 };
@@ -39,14 +39,14 @@ Veichles.propTypes = {
 // Map Redux state to component props
 function mapStateToProps(state) {
   return {
-    veichles: state.veichles,
+    vehicles: state.vehicles,
     events: state.events
   };
 }
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
-    onChangeItClick: () => dispatch(changeItVeichleAction),
+    onChangeItClick: () => dispatch(changeItVehicleAction),
     onChangeItEventAction: () => dispatch(changeItEventAction)
   };
 }
@@ -55,6 +55,6 @@ function mapDispatchToProps(dispatch) {
 const App = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Veichles);
+)(Vehicles);
 
 export default App;

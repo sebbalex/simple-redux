@@ -1,12 +1,12 @@
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { createStore, combineReducers } from "redux";
-import veichleReducer from './reducers/veichleReducer'
+import vehicleReducer from './reducers/vehicleReducer'
 import eventReducer from './reducers/eventReducer'
 
 const composedEnhancers = composeWithDevTools()
 
 const rootReducer = combineReducers({
-  veichles: veichleReducer,
+  vehicles: vehicleReducer,
   events: eventReducer
 })
 

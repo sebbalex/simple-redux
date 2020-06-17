@@ -37,6 +37,13 @@ const updateEvent = (state, action) => {
   };
 }
 
+const addEvent = (state, action) => {
+  const { payload } = action
+  const { vehicleId } = payload
+  console.log();
+  
+}
+
 // Reducer
 const eventById = (state = initValue, action) => {
   switch (action.type) {
@@ -45,7 +52,7 @@ const eventById = (state = initValue, action) => {
     case changeItEventAction.type:
       return updateEvent(state, action)
     case addEventAction.type:
-      return { ...state }
+      return addEvent(state, action)
     default:
       return state;
   }
