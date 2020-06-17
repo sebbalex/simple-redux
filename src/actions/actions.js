@@ -1,7 +1,35 @@
-// Actions
+/*
+ * action types
+ */
 export const changeItVehicleAction = { type: "CHANGEIT_VEHICLE_ACTION" };
 export const listVehicleAction = { type: "LIST_VEHICLE_ACTION" };
 
 export const changeItEventAction = { type: "CHANGEIT_EVENT_ACTION" };
 export const listEventAction = { type: "LIST_EVENT_ACTION" };
-export const addEventAction = { type: "ADD_EVENT_ACTION" };
+export const realAddEventAction = { type: "ADD_EVENT_ACTION" };
+
+/*
+ * action creators
+ */
+export const addEventAction = (eventTitle) => {
+  const eventId = 'event-' + makeid(5);
+  return {
+    type: 'ADD_EVENT_ACTION',
+    payload: {
+      eventId,
+      eventTitle,
+      vehicleId: 'vehicle0'
+    }
+  };
+}
+
+
+function makeid(length) {
+  var result = '';
+  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}

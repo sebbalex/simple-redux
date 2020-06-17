@@ -1,4 +1,4 @@
-import { changeItEventAction, listEventAction, addEventAction } from '../actions/actions'
+import { changeItEventAction, listEventAction, realAddEventAction } from '../actions/actions'
 import { combineReducers } from 'redux'
 
 const initValue = {
@@ -39,9 +39,13 @@ const updateEvent = (state, action) => {
 
 const addEvent = (state, action) => {
   const { payload } = action
-  const { vehicleId } = payload
-  console.log();
+  const { vehicleId, eventTitle, eventId } = payload
   
+  console.log("add event in eventReducer", vehicleId, eventTitle);
+  return {
+    ...state,
+    [eventId]: { title: eventTitle }
+  };
 }
 
 // Reducer
@@ -51,7 +55,7 @@ const eventById = (state = initValue, action) => {
       return { ...state };
     case changeItEventAction.type:
       return updateEvent(state, action)
-    case addEventAction.type:
+    case realAddEventAction.type:
       return addEvent(state, action)
     default:
       return state;

@@ -1,4 +1,4 @@
-import { changeItVehicleAction, listVehicleAction } from '../actions/actions'
+import { changeItVehicleAction, listVehicleAction, realAddEventAction } from '../actions/actions'
 import { combineReducers } from 'redux'
 
 const initValue = {
@@ -26,6 +26,21 @@ const updateVehicle = (state, action) => {
   };
 }
 
+
+const addEvent = (state, action) => {
+  const { payload } = action
+  const { vehicleId, eventId } = payload
+  const vehicle0 = state[vehicleId];
+  console.log("add event in vehicleReducer", vehicleId);
+  return {
+    ...state,
+    [vehicleId]: {
+      ...vehicle0,
+      events: vehicle0.events.concat(eventId),
+    }
+  };
+}
+
 // Reducer
 const vehicleById = (state = initValue, action) => {
   switch (action.type) {
@@ -33,6 +48,8 @@ const vehicleById = (state = initValue, action) => {
       return { ...state };
     case changeItVehicleAction.type:
       return updateVehicle(state, action)
+      case realAddEventAction.type:
+      return addEvent(state, action)
     default:
       return state;
   }
