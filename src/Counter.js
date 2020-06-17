@@ -1,26 +1,26 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import {changeItAction, increaseAction} from './actions'
+import {changeItAction} from './actions'
 import { connect } from "react-redux";
 
 
 class Counter extends Component {
   render() {
-    const { value, veichles, onIncreaseClick, onChangeItClick } = this.props;
+    const { veichles, onChangeItClick } = this.props;
+    // const v = this.state.veichles;
     return (
       <div>
-        <span>{value}</span>
-        <button onClick={onIncreaseClick}>Increase</button>
         <button onClick={onChangeItClick}>Change Veichle0 name</button>
         <div>{veichles?.byId?.veichle0?.name}</div>
+        {/* <div>{v?.byId?.veichle0?.name}</div> */}
       </div>
     );
   }
 }
 
 Counter.propTypes = {
-  value: PropTypes.number.isRequired,
-  onIncreaseClick: PropTypes.func.isRequired,
+  veichles: PropTypes.object.isRequired,
+  events: PropTypes.object.isRequired,
   onChangeItClick: PropTypes.func.isRequired
 };
 
@@ -35,7 +35,6 @@ function mapStateToProps(state) {
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
-    onIncreaseClick: () => dispatch(increaseAction),
     onChangeItClick: () => dispatch(changeItAction)
   };
 }

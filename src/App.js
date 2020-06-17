@@ -1,13 +1,9 @@
 import React from 'react';
 import './App.css';
 import Counter from "./Counter"
-import { createStore } from "redux";
+
 import { Provider } from "react-redux";
-import storeC from "./store"
-
-// Store
-const store = createStore(storeC);
-
+import store from "./store"
 
 
 function App() {
