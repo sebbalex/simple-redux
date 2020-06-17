@@ -1,4 +1,4 @@
-// Action
+// Actions
 export const changeItVeichleAction = { type: "CHANGEIT_VEICHLE_ACTION" };
 export const listVeichleAction = { type: "LIST_VEICHLE_ACTION" };
 
