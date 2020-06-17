@@ -21,8 +21,13 @@ class Vehicles extends Component {
     });
   }
 
-  handleAddEvent() {
-    this.props.onAddEventAction(this.state.eventTitle);
+  handleAddEvent(key) {
+    const eventTitle = this.state.eventTitle;
+    if (eventTitle === "") {
+      console.warn("event title cannot be null");
+      return;
+    }
+    this.props.onAddEventAction(this.state.eventTitle, key);
   }
 
   render() {
@@ -41,26 +46,38 @@ class Vehicles extends Component {
         <div>{JSON.stringify(events?.byId?.event1, null, 2)}</div>
         <br />
         <br />
-        <div>
-          Events for vehicle0:
-          <br />
-          {JSON.stringify(
-            vehicles.byId.vehicle0.events.map((e) => {
-              return events.byId[e].title;
-            }),
-            null,
-            2
-          )}
-        </div>
+
         <br />
-        <br />
-        <label htmlFor="title">Titolo evento</label>
-        <input type="text" name="title" onChange={this.handleInputChange} />
-        <button onClick={this.handleAddEvent}>Add an event</button>
+        <VehiclesAddEvent
+          vehicles={vehicles}
+          events={events}
+          handleInputChange={this.handleInputChange}
+          handleAddEvent={this.handleAddEvent}
+        />
       </div>
     );
   }
 }
+const VehiclesAddEvent = (props) =>
+  Object.keys(props.vehicles.byId).map((key) => (
+    <div key={key}>
+      <div>
+        Events for {key}:
+        <br />
+        {props.vehicles.byId[key].events.map((e, key) => (
+          <>
+            <span key={key}>{props.events.byId[e].title}</span>
+            <br />
+          </>
+        ))}
+      </div>
+      <label htmlFor="title">Titolo evento</label>
+      <input type="text" name="title" onChange={props.handleInputChange} />
+      <button onClick={() => props.handleAddEvent(key)}>Add an event</button>
+      <br />
+      <br />
+    </div>
+  ));
 
 Vehicles.propTypes = {
   vehicles: PropTypes.object.isRequired,
@@ -79,7 +96,8 @@ function mapStateToProps(state) {
 const mapDispatchToProps = (dispatch) => ({
   onChangeItClick: () => dispatch(changeItVehicleAction),
   onChangeItEventAction: () => dispatch(changeItEventAction),
-  onAddEventAction: (eventTitle) => dispatch(addEventAction(eventTitle)),
+  onAddEventAction: (eventTitle, key) =>
+    dispatch(addEventAction(eventTitle, key)),
 });
 
 // Connected Component

@@ -11,14 +11,14 @@ export const realAddEventAction = { type: "ADD_EVENT_ACTION" };
 /*
  * action creators
  */
-export const addEventAction = (eventTitle) => {
+export const addEventAction = (eventTitle, key) => {
   const eventId = 'event-' + makeid(5);
   return {
     type: 'ADD_EVENT_ACTION',
     payload: {
       eventId,
       eventTitle,
-      vehicleId: 'vehicle0'
+      vehicleId: key
     }
   };
 }

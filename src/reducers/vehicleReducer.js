@@ -9,6 +9,14 @@ const initValue = {
     service: "1970-01-01T19:00:00.000Z",
     totkm: "0",
     events: ["event0", "event1"]
+  },
+  vehicle1: {
+    vehicleType: 0,
+    name: "test_add",
+    desc: "testdesc",
+    service: "1970-01-01T19:00:00.000Z",
+    totkm: "0",
+    events: []
   }
 };
 
