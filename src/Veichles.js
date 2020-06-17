@@ -1,16 +1,29 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import {changeItVeichleAction} from './actions/actions'
+import { changeItVeichleAction, changeItEventAction } from './actions/actions'
 import { connect } from "react-redux";
 
 
 class Veichles extends Component {
   render() {
-    const { veichles, onChangeItClick } = this.props;
+    const { veichles, events, onChangeItClick, onChangeItEventAction } = this.props;
     return (
       <div>
         <button onClick={onChangeItClick}>Change Veichle0 name</button>
         <div>{JSON.stringify(veichles?.byId?.veichle0, null, 2)}</div>
+        <br />
+        <button onClick={onChangeItEventAction}>Change event1 name</button>
+        <div>{JSON.stringify(events?.byId?.event1, null, 2)}</div>
+        <br />
+        <br />
+        <div>
+          Events for veichle0:
+          <br />
+          {JSON.stringify(
+            veichles.byId.veichle0.events.map(e => {
+              return events.byId[e].title;
+            })
+            , null, 2)}</div>
       </div>
     );
   }
@@ -33,7 +46,8 @@ function mapStateToProps(state) {
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
-    onChangeItClick: () => dispatch(changeItVeichleAction)
+    onChangeItClick: () => dispatch(changeItVeichleAction),
+    onChangeItEventAction: () => dispatch(changeItEventAction)
   };
 }
 
