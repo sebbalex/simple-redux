@@ -20,20 +20,19 @@ const initValue = {
     //icon: require("../assets/images/mtb.jpg"),
     imageUrl:
       "https://cloud.githubusercontent.com/assets/21040043/24240405/0ba41234-0fe4-11e7-919b-c3f88ced349c.jpg"
-  },
-  allIds: ["event0", "event1"]
+  }
 };
 
 const updateEvent = (state, action) => {
-  const veichleId = "veichle0";
-  const veichle0 = state[veichleId];
-  console.log(veichle0);
+  const eventId = "event1";
+  const event1 = state[eventId];
+  console.log(event1);
 
   return {
     ...state,
-    [veichleId]: {
-      ...veichle0,
-      name: "changed",
+    [eventId]: {
+      ...event1,
+      title: "changed",
     }
   };
 }
@@ -50,9 +49,7 @@ const eventById = (state = initValue, action) => {
   }
 }
 
-const allEvents = (state = initValue, action) => {
-  return { ...state };
-}
+const allEvents = (state = initValue, action) => ({ ...state })
 
 const eventReducer = combineReducers({
   byId: eventById,

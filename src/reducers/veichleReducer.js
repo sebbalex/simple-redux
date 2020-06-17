@@ -2,15 +2,14 @@ import { changeItVeichleAction, listVeichleAction } from '../actions/actions'
 import { combineReducers } from 'redux'
 
 const initValue = {
-  "veichle0": {
+  veichle0: {
     veichleType: 0,
     name: "test_add",
     desc: "testdesc",
     service: "1970-01-01T19:00:00.000Z",
     totkm: "0",
     events: ["event0", "event1"]
-  },
-  allIds: ["veichle0"]
+  }
 };
 
 const updateVeichle = (state, action) => {
@@ -39,9 +38,7 @@ const veichleById = (state = initValue, action) => {
   }
 }
 
-const allVeichles = (state = initValue, action) => {
-  return { ...state };
-}
+const allVeichles = (state = initValue, action) => ({ ...state })
 
 const veichleReducer = combineReducers({
   byId: veichleById,
