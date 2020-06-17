@@ -40,7 +40,7 @@ const veichleById = (state = initValue, action) => {
 }
 
 const allVeichles = (state = initValue, action) => {
-  return { ...state };
+  return state.allIds;
 }
 
 const veichleReducer = combineReducers({
