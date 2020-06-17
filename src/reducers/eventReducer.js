@@ -1,4 +1,4 @@
-import { changeItAction, listAction } from '../actions/actions'
+import { changeItEventAction, listEventAction } from '../actions/actions'
 import { combineReducers } from 'redux'
 
 const initValue = {
@@ -41,9 +41,9 @@ const updateEvent = (state, action) => {
 // Reducer
 const eventById = (state = initValue, action) => {
   switch (action.type) {
-    case listAction.type:
+    case listEventAction.type:
       return { ...state };
-    case changeItAction.type:
+    case changeItEventAction.type:
       return updateEvent(state, action)
     default:
       return state;

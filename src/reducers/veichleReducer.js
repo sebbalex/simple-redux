@@ -1,4 +1,4 @@
-import { changeItAction, listAction } from '../actions/actions'
+import { changeItVeichleAction, listVeichleAction } from '../actions/actions'
 import { combineReducers } from 'redux'
 
 const initValue = {
@@ -30,9 +30,9 @@ const updateVeichle = (state, action) => {
 // Reducer
 const veichleById = (state = initValue, action) => {
   switch (action.type) {
-    case listAction.type:
+    case listVeichleAction.type:
       return { ...state };
-    case changeItAction.type:
+    case changeItVeichleAction.type:
       return updateVeichle(state, action)
     default:
       return state;

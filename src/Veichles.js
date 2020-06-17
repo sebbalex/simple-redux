@@ -1,24 +1,22 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import {changeItAction} from './actions/actions'
+import {changeItVeichleAction} from './actions/actions'
 import { connect } from "react-redux";
 
 
-class Counter extends Component {
+class Veichles extends Component {
   render() {
     const { veichles, onChangeItClick } = this.props;
-    // const v = this.state.veichles;
     return (
       <div>
         <button onClick={onChangeItClick}>Change Veichle0 name</button>
-        <div>{veichles?.byId?.veichle0?.name}</div>
-        {/* <div>{v?.byId?.veichle0?.name}</div> */}
+        <div>{JSON.stringify(veichles?.byId?.veichle0, null, 2)}</div>
       </div>
     );
   }
 }
 
-Counter.propTypes = {
+Veichles.propTypes = {
   veichles: PropTypes.object.isRequired,
   events: PropTypes.object.isRequired,
   onChangeItClick: PropTypes.func.isRequired
@@ -35,7 +33,7 @@ function mapStateToProps(state) {
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
-    onChangeItClick: () => dispatch(changeItAction)
+    onChangeItClick: () => dispatch(changeItVeichleAction)
   };
 }
 
@@ -43,6 +41,6 @@ function mapDispatchToProps(dispatch) {
 const App = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Counter);
+)(Veichles);
 
 export default App;
