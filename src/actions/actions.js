@@ -1,6 +1,8 @@
 /*
  * action types
  */
+export const loadInitialValuesAction = { type: "LOAD_DEFAULT" };
+
 export const changeItVehicleAction = { type: "CHANGEIT_VEHICLE_ACTION" };
 export const listVehicleAction = { type: "LIST_VEHICLE_ACTION" };
 

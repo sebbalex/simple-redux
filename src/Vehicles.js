@@ -4,6 +4,7 @@ import {
   changeItVehicleAction,
   changeItEventAction,
   addEventAction,
+  loadInitialValuesAction,
 } from "./actions/actions";
 import { connect } from "react-redux";
 
@@ -36,9 +37,13 @@ class Vehicles extends Component {
       events,
       onChangeItClick,
       onChangeItEventAction,
+      onLoadDefaultValues
     } = this.props;
     return (
       <div>
+        <button onClick={onLoadDefaultValues}>Load default values</button>
+        <br />
+        <br />
         <button onClick={onChangeItClick}>Change Vehicle0 name</button>
         <div>{JSON.stringify(vehicles?.byId?.vehicle0, null, 2)}</div>
         <br />
@@ -94,6 +99,7 @@ function mapStateToProps(state) {
 }
 // Map Redux actions to component props
 const mapDispatchToProps = (dispatch) => ({
+  onLoadDefaultValues: () => dispatch(loadInitialValuesAction),
   onChangeItClick: () => dispatch(changeItVehicleAction),
   onChangeItEventAction: () => dispatch(changeItEventAction),
   onAddEventAction: (eventTitle, key) =>

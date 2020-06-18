@@ -2,6 +2,7 @@ import {
   changeItEventAction,
   listEventAction,
   realAddEventAction,
+  loadInitialValuesAction,
 } from "../actions/actions";
 import { combineReducers } from "redux";
 
@@ -49,8 +50,10 @@ const addEvent = (state, action) => {
 };
 
 // Reducer
-const eventById = (state = initValue, action) => {
+const eventById = (state = {}, action) => {
   switch (action.type) {
+    case loadInitialValuesAction.type:
+      return initValue;
     case listEventAction.type:
       return { ...state };
     case changeItEventAction.type:
@@ -62,7 +65,16 @@ const eventById = (state = initValue, action) => {
   }
 };
 
-const allEvents = (state = initValue, action) => Object.keys(state);
+const allEvents = (state = [], action) => {
+  switch (action.type) {
+    case loadInitialValuesAction.type:
+      return Object.keys(initValue);
+    case realAddEventAction.type:
+      return [...state, action.payload.eventId]
+    default:
+      return state;
+  }
+}
 
 const eventReducer = combineReducers({
   byId: eventById,

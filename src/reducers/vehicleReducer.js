@@ -2,6 +2,7 @@ import {
   changeItVehicleAction,
   listVehicleAction,
   realAddEventAction,
+  loadInitialValuesAction,
 } from "../actions/actions";
 import { combineReducers } from "redux";
 
@@ -51,8 +52,10 @@ const addEvent = (state, action) => {
 };
 
 // Reducer
-const vehicleById = (state = initValue, action) => {
+const vehicleById = (state = {}, action) => {
   switch (action.type) {
+    case loadInitialValuesAction.type:
+      return initValue;
     case listVehicleAction.type:
       return { ...state };
     case changeItVehicleAction.type:
@@ -64,7 +67,16 @@ const vehicleById = (state = initValue, action) => {
   }
 };
 
-const allVehicles = (state = initValue, action) => Object.keys(state);
+const allVehicles = (state = [], action) => {
+  switch (action.type) {
+    case loadInitialValuesAction.type:
+      return Object.keys(initValue);
+    case realAddEventAction.type:
+      return [...state, action.payload.eventId]
+    default:
+      return state;
+  }
+}
 
 const vehicleReducer = combineReducers({
   byId: vehicleById,
