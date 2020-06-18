@@ -1,5 +1,9 @@
-import { changeItVehicleAction, listVehicleAction, realAddEventAction } from '../actions/actions'
-import { combineReducers } from 'redux'
+import {
+  changeItVehicleAction,
+  listVehicleAction,
+  realAddEventAction,
+} from "../actions/actions";
+import { combineReducers } from "redux";
 
 const initValue = {
   vehicle0: {
@@ -8,7 +12,7 @@ const initValue = {
     desc: "testdesc",
     service: "1970-01-01T19:00:00.000Z",
     totkm: "0",
-    events: ["event0", "event1"]
+    events: ["event0", "event1"],
   },
   vehicle1: {
     vehicleType: 0,
@@ -16,8 +20,8 @@ const initValue = {
     desc: "testdesc",
     service: "1970-01-01T19:00:00.000Z",
     totkm: "0",
-    events: []
-  }
+    events: [],
+  },
 };
 
 const updateVehicle = (state, action) => {
@@ -29,23 +33,22 @@ const updateVehicle = (state, action) => {
     [vehicleId]: {
       ...vehicle0,
       name: "changed",
-    }
+    },
   };
-}
-
+};
 
 const addEvent = (state, action) => {
-  const { payload } = action
-  const { vehicleId, eventId } = payload
+  const { payload } = action;
+  const { vehicleId, eventId } = payload;
   const vehicle0 = state[vehicleId];
   return {
     ...state,
     [vehicleId]: {
       ...vehicle0,
       events: vehicle0.events.concat(eventId),
-    }
+    },
   };
-}
+};
 
 // Reducer
 const vehicleById = (state = initValue, action) => {
@@ -53,19 +56,19 @@ const vehicleById = (state = initValue, action) => {
     case listVehicleAction.type:
       return { ...state };
     case changeItVehicleAction.type:
-      return updateVehicle(state, action)
-      case realAddEventAction.type:
-      return addEvent(state, action)
+      return updateVehicle(state, action);
+    case realAddEventAction.type:
+      return addEvent(state, action);
     default:
       return state;
   }
-}
+};
 
-const allVehicles = (state = initValue, action) => ({ ...state })
+const allVehicles = (state = initValue, action) => Object.keys(state);
 
 const vehicleReducer = combineReducers({
   byId: vehicleById,
-  allIds: allVehicles
-})
+  allIds: allVehicles,
+});
 
-export default vehicleReducer
+export default vehicleReducer;

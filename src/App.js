@@ -1,10 +1,9 @@
-import React from 'react';
-import './App.css';
-import Vehicles from "./Vehicles"
+import React from "react";
+import "./App.css";
+import Vehicles from "./Vehicles";
 
 import { Provider } from "react-redux";
-import store from "./store"
-
+import store from "./store";
 
 function App() {
   return (

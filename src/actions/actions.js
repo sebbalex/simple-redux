@@ -12,24 +12,24 @@ export const realAddEventAction = { type: "ADD_EVENT_ACTION" };
  * action creators
  */
 export const addEventAction = (eventTitle, key) => {
-  const eventId = 'event-' + makeid(5);
+  const eventId = "event-" + makeid(5);
   return {
-    type: 'ADD_EVENT_ACTION',
+    type: "ADD_EVENT_ACTION",
     payload: {
       eventId,
       eventTitle,
-      vehicleId: key
-    }
+      vehicleId: key,
+    },
   };
-}
-
+};
 
 const makeid = (length) => {
-  let result = '';
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = "";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let charactersLength = characters.length;
   for (var i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   return result;
-}
+};

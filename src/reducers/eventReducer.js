@@ -1,5 +1,9 @@
-import { changeItEventAction, listEventAction, realAddEventAction } from '../actions/actions'
-import { combineReducers } from 'redux'
+import {
+  changeItEventAction,
+  listEventAction,
+  realAddEventAction,
+} from "../actions/actions";
+import { combineReducers } from "redux";
 
 const initValue = {
   event0: {
@@ -10,7 +14,7 @@ const initValue = {
     lineColor: "#009688",
     //icon: require("../assets/images/mtb.jpg"),
     imageUrl:
-      "https://cloud.githubusercontent.com/assets/21040043/24240340/c0f96b3a-0fe3-11e7-8964-fe66e4d9be7a.jpg"
+      "https://cloud.githubusercontent.com/assets/21040043/24240340/c0f96b3a-0fe3-11e7-8964-fe66e4d9be7a.jpg",
   },
   event1: {
     time: "2500",
@@ -19,8 +23,8 @@ const initValue = {
       "Badminton is a racquet sport played using racquets to hit a shuttlecock across a net.",
     //icon: require("../assets/images/mtb.jpg"),
     imageUrl:
-      "https://cloud.githubusercontent.com/assets/21040043/24240405/0ba41234-0fe4-11e7-919b-c3f88ced349c.jpg"
-  }
+      "https://cloud.githubusercontent.com/assets/21040043/24240405/0ba41234-0fe4-11e7-919b-c3f88ced349c.jpg",
+  },
 };
 
 const updateEvent = (state, action) => {
@@ -31,18 +35,18 @@ const updateEvent = (state, action) => {
     [eventId]: {
       ...event1,
       title: "changed",
-    }
+    },
   };
-}
+};
 
 const addEvent = (state, action) => {
-  const { payload } = action
-  const { eventTitle, eventId } = payload
+  const { payload } = action;
+  const { eventTitle, eventId } = payload;
   return {
     ...state,
-    [eventId]: { title: eventTitle }
+    [eventId]: { title: eventTitle },
   };
-}
+};
 
 // Reducer
 const eventById = (state = initValue, action) => {
@@ -50,19 +54,19 @@ const eventById = (state = initValue, action) => {
     case listEventAction.type:
       return { ...state };
     case changeItEventAction.type:
-      return updateEvent(state, action)
+      return updateEvent(state, action);
     case realAddEventAction.type:
-      return addEvent(state, action)
+      return addEvent(state, action);
     default:
       return state;
   }
-}
+};
 
-const allEvents = (state = initValue, action) => ({ ...state })
+const allEvents = (state = initValue, action) => Object.keys(state);
 
 const eventReducer = combineReducers({
   byId: eventById,
-  allIds: allEvents
-})
+  allIds: allEvents,
+});
 
-export default eventReducer
+export default eventReducer;
