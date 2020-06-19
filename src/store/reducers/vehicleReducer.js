@@ -6,7 +6,7 @@ import {
 } from "../actions/actions";
 import { combineReducers } from "redux";
 
-const initValue = {
+export const initValue = {
   vehicle0: {
     vehicleType: 0,
     name: "test_add",
@@ -52,7 +52,7 @@ const addEvent = (state, action) => {
 };
 
 // Reducer
-const vehicleById = (state = {}, action) => {
+export const vehicleById = (state = {}, action) => {
   switch (action.type) {
     case loadInitialValuesAction.type:
       return initValue;
