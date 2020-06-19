@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import App from './App';
+import App from '../App';
 
 describe('check basic rendered components', () => {
   // https://testing-library.com/docs/react-testing-library/cheatsheet

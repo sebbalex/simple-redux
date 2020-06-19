@@ -5,7 +5,7 @@ import {
   changeItEventAction,
   addEventAction,
   loadInitialValuesAction,
-} from "./actions/actions";
+} from "./store/actions/actions";
 import { connect } from "react-redux";
 
 class Vehicles extends Component {
