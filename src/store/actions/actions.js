@@ -10,6 +10,8 @@ export const changeItEventAction = { type: "CHANGEIT_EVENT_ACTION" };
 export const listEventAction = { type: "LIST_EVENT_ACTION" };
 export const realAddEventAction = { type: "ADD_EVENT_ACTION" };
 
+export const errorMessageAction = {type: "ERROR_MESSAGE_ACTION"};
+
 /*
  * action creators
  */
