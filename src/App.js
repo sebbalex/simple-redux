@@ -3,7 +3,7 @@ import "./App.css";
 import Vehicles from "./Vehicles";
 
 import { Provider } from "react-redux";
-import store from "./store/store";
+import store from "./store";
 
 function App() {
   return (

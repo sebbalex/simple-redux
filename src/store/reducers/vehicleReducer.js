@@ -42,9 +42,9 @@ const addEvent = (state, action) => {
   const { payload } = action;
   const { vehicleId, eventId } = payload;
   const vehicle0 = state[vehicleId];
-  if(vehicle0 === undefined) {
-    return state;
-  }
+  // if(vehicle0 === undefined) {
+  //   return state;
+  // }
   return {
     ...state,
     [vehicleId]: {
