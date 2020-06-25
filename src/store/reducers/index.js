@@ -1,24 +1,23 @@
-import { combineReducers } from 'redux'
-import { errorMessageAction } from '../actions/actions'
-import vehicleReducer from "./vehicleReducer";
-import eventReducer from "./eventReducer";
+import {combineReducers} from 'redux';
+import {resetErrorAction} from '../actions/actions';
+import vehicleReducer from './vehicleReducer';
+import eventReducer from './eventReducer';
 
 // Updates error message to notify about the failed fetches.
 const errorMessage = (state = null, action) => {
-  const { type, error } = action
-
-  if (type === errorMessageAction) {
-    return null
+  const {type, error} = action;
+  if (type === resetErrorAction) {
+    return null;
   } else if (error) {
-    return error
+    return error;
   }
-  return state
-}
+  return state;
+};
 
 const rootReducer = combineReducers({
   vehicles: vehicleReducer,
   events: eventReducer,
   errorMessage,
-})
+});
 
-export default rootReducer
+export default rootReducer;

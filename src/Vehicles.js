@@ -1,17 +1,18 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {
   changeItVehicleAction,
   changeItEventAction,
   addEventAction,
   loadInitialValuesAction,
-} from "./store/actions/actions";
-import { connect } from "react-redux";
+  updateVehicleTitle,
+} from './store/actions/actions';
+import {connect} from 'react-redux';
 
 class Vehicles extends Component {
   constructor(props) {
     super(props);
-    this.state = { eventTitle: "" };
+    this.state = {eventTitle: ''};
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleAddEvent = this.handleAddEvent.bind(this);
   }
@@ -24,8 +25,8 @@ class Vehicles extends Component {
 
   handleAddEvent(key) {
     const eventTitle = this.state.eventTitle;
-    if (eventTitle === "") {
-      console.warn("event title cannot be null");
+    if (eventTitle === '') {
+      console.warn('event title cannot be null');
       return;
     }
     this.props.onAddEventAction(this.state.eventTitle, key);
@@ -37,10 +38,16 @@ class Vehicles extends Component {
       events,
       onChangeItClick,
       onChangeItEventAction,
-      onLoadDefaultValues
+      onLoadDefaultValues,
+      onChangeVehicleTitle,
+      errorMessage,
     } = this.props;
     return (
       <div>
+        {errorMessage && <h2>{errorMessage}</h2>}
+        <button onClick={onChangeVehicleTitle}>Show Error</button>
+        <br />
+        <br />
         <button onClick={onLoadDefaultValues}>Load default values</button>
         <br />
         <br />
@@ -95,6 +102,7 @@ function mapStateToProps(state) {
   return {
     vehicles: state.vehicles,
     events: state.events,
+    errorMessage: state.errorMessage,
   };
 }
 // Map Redux actions to component props
@@ -102,6 +110,7 @@ const mapDispatchToProps = (dispatch) => ({
   onLoadDefaultValues: () => dispatch(loadInitialValuesAction),
   onChangeItClick: () => dispatch(changeItVehicleAction),
   onChangeItEventAction: () => dispatch(changeItEventAction),
+  onChangeVehicleTitle: () => dispatch(updateVehicleTitle(undefined, undefined)),
   onAddEventAction: (eventTitle, key) =>
     dispatch(addEventAction(eventTitle, key)),
 });
