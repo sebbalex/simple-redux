@@ -7,8 +7,6 @@ import eventReducer from './eventReducer';
 const errorMessage = (state = null, action) => {
   const {type, error} = action;
   if (type === resetErrorAction.type) {
-    console.log("here in reset");
-    
     return null;
   } else if (error) {
     return error;
