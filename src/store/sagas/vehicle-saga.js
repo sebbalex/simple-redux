@@ -4,7 +4,7 @@ import {  resetErrorAction } from '../actions/actions';
 const delay = (ms) => new Promise(res => setTimeout(res, ms))
 
 
-// worker Saga: will be fired on CHANGEIT_EVENT_ACTION actions
+// worker Saga: will be fired on ERROR actions
 function* clearError(action) {
   yield delay(3000);
   yield put(resetErrorAction);
