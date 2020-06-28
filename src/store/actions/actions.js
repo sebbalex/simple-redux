@@ -29,6 +29,12 @@ export const updateVehicleTitle = (state, key) => {
 
 export const addEventAction = (eventTitle, key) => {
   const eventId = 'event-' + makeid(5);
+  if ( eventTitle === '') {
+    return {
+      type: 'ERROR',
+      error: 'event couldn\'t be empty',
+    };
+  }
   return {
     type: 'ADD_EVENT_ACTION',
     payload: {

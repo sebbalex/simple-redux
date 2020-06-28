@@ -24,11 +24,6 @@ class Vehicles extends Component {
   }
 
   handleAddEvent(key) {
-    const eventTitle = this.state.eventTitle;
-    if (eventTitle === '') {
-      console.warn('event title cannot be null');
-      return;
-    }
     this.props.onAddEventAction(this.state.eventTitle, key);
   }
 
