@@ -1,16 +1,18 @@
 /*
  * action types
  */
-export const loadInitialValuesAction = {type: 'LOAD_DEFAULT'};
+export const loadInitialValuesAction = { type: 'LOAD_DEFAULT' };
 
-export const changeItVehicleAction = {type: 'CHANGEIT_VEHICLE_ACTION'};
-export const listVehicleAction = {type: 'LIST_VEHICLE_ACTION'};
+export const changeItVehicleAction = { type: 'CHANGEIT_VEHICLE_ACTION' };
+export const listVehicleAction = { type: 'LIST_VEHICLE_ACTION' };
 
-export const changeItEventAction = {type: 'CHANGEIT_EVENT_ACTION'};
-export const listEventAction = {type: 'LIST_EVENT_ACTION'};
-export const realAddEventAction = {type: 'ADD_EVENT_ACTION'};
+export const changeItEventAction = { type: 'CHANGEIT_EVENT_ACTION' };
+export const listEventAction = { type: 'LIST_EVENT_ACTION' };
+export const realAddEventAction = { type: 'ADD_EVENT_ACTION' };
 
-export const resetErrorAction = {type: 'ERROR_RESET_ACTION'};
+// notifications
+export const resetErrorAction = { type: 'ERROR_RESET_ACTION' };
+export const errorAction = { type: 'ERROR' };
 
 /*
  * action creators
@@ -18,25 +20,25 @@ export const resetErrorAction = {type: 'ERROR_RESET_ACTION'};
 export const updateVehicleTitle = (state, key) => {
   if (key === undefined) {
     return {
-      type: 'ERROR',
+      ...errorAction,
       error: 'no vehicle found',
     };
   }
   return {
-    type: 'CHANGEIT_EVENT_ACTION',
+    ...changeItEventAction
   };
 };
 
 export const addEventAction = (eventTitle, key) => {
   const eventId = 'event-' + makeid(5);
-  if ( eventTitle === '') {
+  if (eventTitle === '') {
     return {
-      type: 'ERROR',
+      ...errorAction,
       error: 'event couldn\'t be empty',
     };
   }
   return {
-    type: 'ADD_EVENT_ACTION',
+    ...realAddEventAction,
     payload: {
       eventId,
       eventTitle,

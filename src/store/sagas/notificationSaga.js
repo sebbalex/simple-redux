@@ -1,5 +1,5 @@
 import { put, takeEvery, all } from 'redux-saga/effects'
-import { resetErrorAction } from '../actions/actions';
+import { resetErrorAction, errorAction } from '../actions/actions';
 
 const delay = (ms) => new Promise(res => setTimeout(res, ms))
 
@@ -13,7 +13,7 @@ function* clearError(action) {
 }
 
 function* clearErrorSaga() {
-  yield takeEvery("ERROR", clearError);
+  yield takeEvery(errorAction.type, clearError);
 }
 
 
