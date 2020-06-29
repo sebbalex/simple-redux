@@ -6,6 +6,7 @@ import {
   addEventAction,
   loadInitialValuesAction,
   updateVehicleTitle,
+  pingApiAction,
 } from './store/actions/actions';
 import {connect} from 'react-redux';
 
@@ -31,6 +32,8 @@ class Vehicles extends Component {
     const {
       vehicles,
       events,
+      apis,
+      onCallApi,
       onChangeItClick,
       onChangeItEventAction,
       onLoadDefaultValues,
@@ -44,6 +47,10 @@ class Vehicles extends Component {
         <br />
         <br />
         <button onClick={onLoadDefaultValues}>Load default values</button>
+        <br />
+        <br />
+        <button onClick={onCallApi}>Call API</button>
+        <div>{JSON.stringify(apis?.message, null, 2)}</div>
         <br />
         <br />
         <button onClick={onChangeItClick}>Change Vehicle0 name</button>
@@ -97,11 +104,13 @@ function mapStateToProps(state) {
   return {
     vehicles: state.vehicles,
     events: state.events,
+    apis: state.apis,
     errorMessage: state.errorMessage,
   };
 }
 // Map Redux actions to component props
 const mapDispatchToProps = (dispatch) => ({
+  onCallApi: () => dispatch(pingApiAction),
   onLoadDefaultValues: () => dispatch(loadInitialValuesAction),
   onChangeItClick: () => dispatch(changeItVehicleAction),
   onChangeItEventAction: () => dispatch(changeItEventAction),

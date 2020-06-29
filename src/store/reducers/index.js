@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 import {resetErrorAction} from '../actions/actions';
 import vehicleReducer from './vehicleReducer';
 import eventReducer from './eventReducer';
+import apiReducer from './apiReducer';
 
 // Updates error message to notify about the failed fetches.
 const errorMessage = (state = null, action) => {
@@ -17,6 +18,7 @@ const errorMessage = (state = null, action) => {
 const rootReducer = combineReducers({
   vehicles: vehicleReducer,
   events: eventReducer,
+  apis: apiReducer,
   errorMessage,
 });
 

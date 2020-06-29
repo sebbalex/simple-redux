@@ -1,18 +1,22 @@
 /*
  * action types
  */
-export const loadInitialValuesAction = { type: 'LOAD_DEFAULT' };
+export const loadInitialValuesAction = {type: 'LOAD_DEFAULT'};
 
-export const changeItVehicleAction = { type: 'CHANGEIT_VEHICLE_ACTION' };
-export const listVehicleAction = { type: 'LIST_VEHICLE_ACTION' };
+export const changeItVehicleAction = {type: 'CHANGEIT_VEHICLE_ACTION'};
+export const listVehicleAction = {type: 'LIST_VEHICLE_ACTION'};
 
-export const changeItEventAction = { type: 'CHANGEIT_EVENT_ACTION' };
-export const listEventAction = { type: 'LIST_EVENT_ACTION' };
-export const realAddEventAction = { type: 'ADD_EVENT_ACTION' };
+export const changeItEventAction = {type: 'CHANGEIT_EVENT_ACTION'};
+export const listEventAction = {type: 'LIST_EVENT_ACTION'};
+export const realAddEventAction = {type: 'ADD_EVENT_ACTION'};
+
+// api
+export const pingApiAction = {type: 'API_PING_ACTION'};
+export const pingApiGetAction = {type: 'API_PING_GET_ACTION'};
 
 // notifications
-export const resetErrorAction = { type: 'ERROR_RESET_ACTION' };
-export const errorAction = { type: 'ERROR' };
+export const resetErrorAction = {type: 'ERROR_RESET_ACTION'};
+export const errorAction = {type: 'ERROR'};
 
 /*
  * action creators
@@ -25,7 +29,7 @@ export const updateVehicleTitle = (state, key) => {
     };
   }
   return {
-    ...changeItEventAction
+    ...changeItEventAction,
   };
 };
 
@@ -34,7 +38,7 @@ export const addEventAction = (eventTitle, key) => {
   if (eventTitle === '') {
     return {
       ...errorAction,
-      error: 'event couldn\'t be empty',
+      error: "event couldn't be empty",
     };
   }
   return {
