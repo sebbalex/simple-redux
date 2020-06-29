@@ -5,8 +5,7 @@ function* isVehicleExists() {
   const vehicleId = 'vehicle0';
   const state = yield select();
   const vehicle0 = state.vehicles?.byId[vehicleId];
-  console.log(vehicle0);
-  
+
   if (vehicle0 === undefined) {
     yield put({...errorAction, error: "Specified vehicle doesn't exist"});
   }

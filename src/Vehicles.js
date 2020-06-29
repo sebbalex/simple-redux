@@ -113,7 +113,8 @@ const mapDispatchToProps = (dispatch) => ({
   onLoadDefaultValues: () => dispatch(loadInitialValuesAction),
   onChangeItClick: () => dispatch(changeItVehicleAction),
   onChangeItEventAction: () => dispatch(changeItEventAction),
-  onChangeVehicleTitle: () => dispatch(updateVehicleTitle(undefined, undefined)),
+  onChangeVehicleTitle: () =>
+    dispatch(updateVehicleTitle(undefined, undefined)),
   onAddEventAction: (eventTitle, key) =>
     dispatch(addEventAction(eventTitle, key)),
 });

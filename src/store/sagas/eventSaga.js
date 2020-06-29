@@ -5,8 +5,7 @@ function* isEventExists() {
   const eventId = 'event1';
   const state = yield select();
   const event1 = state.events?.byId[eventId];
-  console.log(event1);
-  
+
   if (event1 === undefined) {
     yield put({...errorAction, error: "Specified event doesn't exist"});
   }

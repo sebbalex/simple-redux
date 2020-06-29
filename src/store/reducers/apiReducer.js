@@ -7,7 +7,7 @@ const apiReducer = (state = {}, action) => {
       return {...state};
     case pingApiGetAction.type:
       console.log(action);
-      
+
       return {...state, message: action.message};
     default:
       return state;
