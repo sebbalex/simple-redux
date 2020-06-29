@@ -73,16 +73,15 @@ class Vehicles extends Component {
   }
 }
 const VehiclesAddEvent = (props) =>
-  Object.keys(props.vehicles.byId).map((key) => (
-    <div key={key}>
+  Object.keys(props.vehicles.byId).map((key, idx) => (
+    <div key={idx}>
       <div>
         Events for {key}:
         <br />
-        {props.vehicles.byId[key].events.map((e, key) => (
-          <>
-            <span key={key}>{props.events.byId[e].title}</span>
-            <br />
-          </>
+        {props.vehicles.byId[key].events.map((e, subidx) => (
+          <div key={subidx}>
+            <span key={subidx}>{props.events.byId[e].title}</span>
+          </div>
         ))}
       </div>
       <label htmlFor="title">Titolo evento</label>
