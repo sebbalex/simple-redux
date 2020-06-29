@@ -1,14 +1,14 @@
-import { put, takeEvery, all } from 'redux-saga/effects'
+import { put, takeEvery, all, call } from 'redux-saga/effects'
 import { resetErrorAction, errorAction } from '../actions/actions';
 
-const delay = (ms) => new Promise(res => setTimeout(res, ms))
+export const delay = (ms) => new Promise(res => setTimeout(res, ms))
 
 
 // worker Saga: will be fired on ERROR actions
 // and it will raise RESET_ERROR action to clear it
 // after 3000ms
-function* clearError(action) {
-  yield delay(3000);
+export function* clearError() {
+  yield call(delay, 3000)
   yield put(resetErrorAction);
 }
 
